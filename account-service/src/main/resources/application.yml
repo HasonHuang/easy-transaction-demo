@@ -1,0 +1,55 @@
+server:
+  port: 7020
+
+# DataSource Config
+spring:
+  application:
+    name: account-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/easytrans-account?characterEncoding=UTF-8&useSSL=false
+    username: easytrans-user
+    password: 123456
+
+mybatis-plus:
+  type-enums-package: com.ihason.dtp.easytransaction.demo.entity.constant
+
+
+eureka:
+  instance:
+    # 将自己的IP注册到 Eureka Server，false 表示注册微服务所在操作系统的 hostname 到 Eureka Server
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+# 配置 Easy Transaction
+easytrans:
+  common:
+    tablePrefix: 'trx_'
+  extensionsuite: # 扩展套装，如基于数据库实现的 选主、字符串编码、id生成器、事务日志等
+    database:
+      enabled: true
+      logCleanEnabled: true
+      logReservedDays: 14
+      logCleanTime: 01:22:00
+      tablePrefix: 'trx_'
+      dbSetting: # extension suite 公用的数据源的配置，不一定要配置为当前业务数据库，可公用一个配置，也可以每个业务库单独配置一个
+        driverClassName: com.mysql.jdbc.Driver
+        url: ${spring.datasource.url}
+        username: ${spring.datasource.username}
+        password: ${spring.datasource.password}
+# close the default implement to use database extensionsuite
+  log:
+    database:
+      enabled: false
+  master:
+    zk:
+      enabled: false
+  stringcodec:
+    zk:
+      enabled: false
+  idgen:
+    trxId:
+      zkSnow:
+        enabled: false
