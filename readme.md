@@ -6,21 +6,19 @@
 
 ## 安装
 
-1、准备 MySQL 数据库。
-
-2、使用 [db](./db) 文件夹下的 SQL 脚本初始化数据库。
+1、使用 [db](./db) 文件夹下的 SQL 脚本初始化 MySQL 数据库。
 
   - 执行 schema.sql
   - 执行 schema-easytrans.sql
   - 执行 data.sql
 
-3、启动 [eureka](./eureka) 模块的 `EurekaServerApplication`
+2、启动应用程序
 
-4、启动 [account-service](./account-service) 模板的 `AccountServiceApplication`
+  - 启动 [eureka](./eureka) 模块的 `EurekaServerApplication`
+  - 启动 [account-service](./account-service) 模板的 `AccountServiceApplication`
+  - 启动 [order-service](./order-service) 模块的 `OrderServiceApplication`
 
-5、启动 [order-service](./order-service) 模块的 `OrderServiceApplication`
-
-6、完成。
+3、完成。
 
 ## 使用
 
