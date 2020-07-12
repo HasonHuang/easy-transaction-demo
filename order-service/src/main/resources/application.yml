@@ -1,6 +1,5 @@
 server:
   port: 7010
-
 # DataSource Config
 spring:
   application:
@@ -25,6 +24,8 @@ eureka:
 
 # 配置 Easy Transaction
 easytrans:
+  recovery:
+    enabled: true
   common:
     tablePrefix: 'trx_'
   extensionsuite: # 扩展套装，如基于数据库实现的 选主、字符串编码、id生成器、事务日志等

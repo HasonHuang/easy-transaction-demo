@@ -29,3 +29,7 @@ http://localhost:7010/v1/orders?userId=2&price=80
 ```
 
 其中，`userId` 使用 1-3 范围内数值。
+
+说明：
+1. `price > 1000` TRY 阶段抛出异常
+2. `price` 是偶数，

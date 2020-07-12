@@ -15,6 +15,7 @@
         <module>account-service</module>
         <module>account-service-api</module>
         <module>bintest</module>
+        <module>core</module>
     </modules>
 
     <parent>
@@ -45,6 +46,11 @@
             <dependency>
                 <groupId>com.hason.dtp.easytrans.demos</groupId>
                 <artifactId>account-service-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hason.dtp.easytrans.demos</groupId>
+                <artifactId>core</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

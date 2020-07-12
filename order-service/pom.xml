@@ -53,6 +53,10 @@
             <artifactId>easytrans-starter</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.hason.dtp.easytrans.demos</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
