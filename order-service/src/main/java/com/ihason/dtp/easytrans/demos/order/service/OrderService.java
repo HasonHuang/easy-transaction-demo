@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
-import static com.ihason.dtp.easytrans.demos.order.service.constant.BizCode.ORDER;
+import static com.ihason.dtp.easytrans.demos.order.service.constant.BusCode.ORDER;
 import static org.apache.commons.lang.Validate.notNull;
 
 @Slf4j

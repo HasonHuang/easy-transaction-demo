@@ -21,13 +21,7 @@ public class AccountService {
 
     @Transactional
     public Account deductByUserId(Long userId, BigDecimal amount) {
-        notNull(amount, "The argument [amount] cannot be null");
-        Account account = getAccount(userId);
-        notNull(account, "Cannot find any account for user id: " + userId);
-
-        account.setAmount(account.getAmount().subtract(amount));
-        accountDao.updateById(account);
-        return account;
+        return deduct(userId, amount);
     }
 
     @Transactional
@@ -74,6 +68,34 @@ public class AccountService {
         account.setUpdatedTime(LocalDateTime.now());
         accountDao.updateById(account);
 
+        return account;
+    }
+
+    /**
+     * 直接增加资金
+     */
+    public Account add(Long userId, BigDecimal amount) {
+        Account account = getAccount(userId);
+        notNull(account, "Cannot find any account for user id: " + userId);
+
+        account.setAmount(account.getAmount().add(amount));
+        account.setUpdatedTime(LocalDateTime.now());
+        accountDao.updateById(account);
+        return account;
+    }
+
+    /**
+     * 直接扣减资金
+     */
+    public Account deduct(Long userId, BigDecimal amount) {
+        Account account = getAccount(userId);
+        notNull(account, "Cannot find any account for user id: " + userId);
+
+        Validate.isTrue(account.getFreezeAmount().compareTo(amount) >= 0, "Sorry, your freeze balance is running low");
+
+        account.setAmount(account.getAmount().subtract(amount));
+        account.setUpdatedTime(LocalDateTime.now());
+        accountDao.updateById(account);
         return account;
     }
 

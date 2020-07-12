@@ -17,11 +17,12 @@ import java.math.BigDecimal;
  */
 public class EasyTransAccountDTO {
 
+
     /**
-     * 请求参数
+     * SAGA TCC 模式的请求参数
      */
     @Getter @Setter @ToString
-    @BusinessIdentifer(appId= ServiceConstant.SERVICE_NAME, busCode = ServiceConstant.BIZ_CODE_DEDUCT)
+    @BusinessIdentifer(appId= ServiceConstant.SERVICE_NAME, busCode = ServiceConstant.BUS_CODE_DEDUCT)
     public static class AccountRequestDTO implements Serializable, SagaTccMethodRequest {
         private Long userId;
         private BigDecimal amount;
