@@ -24,7 +24,7 @@ public class Integral {
     private Long id;
     @TableField("user_id")
     private Long userId;
-    private BigDecimal amount;
+    private Long amount;
     @TableField("created_time")
     private LocalDateTime createdTime;
     @TableField("updated_time")

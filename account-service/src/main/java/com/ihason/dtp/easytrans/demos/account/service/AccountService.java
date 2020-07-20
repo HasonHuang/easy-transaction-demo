@@ -91,7 +91,7 @@ public class AccountService {
         Account account = getAccount(userId);
         notNull(account, "Cannot find any account for user id: " + userId);
 
-        Validate.isTrue(account.getFreezeAmount().compareTo(amount) >= 0, "Sorry, your freeze balance is running low");
+        Validate.isTrue(account.getAmount().compareTo(amount) >= 0, "Sorry, your freeze balance is running low");
 
         account.setAmount(account.getAmount().subtract(amount));
         account.setUpdatedTime(LocalDateTime.now());

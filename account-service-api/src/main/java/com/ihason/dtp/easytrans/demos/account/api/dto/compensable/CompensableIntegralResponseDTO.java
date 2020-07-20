@@ -7,15 +7,15 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 可补偿接口的返回数据，余额
+ * 可补偿接口的返回数据，积分
  *
  * @author Hason
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CompensableAccountResponseDTO implements Serializable {
+public class CompensableIntegralResponseDTO implements Serializable {
 
-    /** 账户ID */
-    private Long id;
+    /** 余额 */
+    private Long amount;
 }

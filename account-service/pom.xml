@@ -49,6 +49,10 @@
 
         <dependency>
             <groupId>com.hason.dtp.easytrans.demos</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.hason.dtp.easytrans.demos</groupId>
             <artifactId>account-service-api</artifactId>
         </dependency>
 

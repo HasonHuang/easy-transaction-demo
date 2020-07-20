@@ -8,7 +8,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * 补偿模式的请求参数
@@ -16,10 +15,10 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString
-@BusinessIdentifer(appId= ServiceConstant.SERVICE_NAME, busCode = ServiceConstant.BUS_CODE_CPS_DEDUCT)
-public class CompensableAccountRequestDTO implements Serializable, CompensableMethodRequest<CompensableAccountResponseDTO> {
+@BusinessIdentifer(appId= ServiceConstant.SERVICE_NAME, busCode = ServiceConstant.BUS_CODE_CPS_ADD_INTEGRAL)
+public class CompensableIntegralRequestDTO implements Serializable, CompensableMethodRequest<CompensableIntegralResponseDTO> {
 
     private Long userId;
-    private BigDecimal amount;
+    private Integer amount;
 
 }

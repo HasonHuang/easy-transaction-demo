@@ -15,6 +15,9 @@ public class ServiceConstant {
 
     public static final String BUS_CODE_DEDUCT = "sagaDeduct";
 
-    public static final String BUS_CODE_DEDUCT_CPS = "compensable-deduct";
+    /** 扣减余额，补偿模式 */
+    public static final String BUS_CODE_CPS_DEDUCT = "compensable-deduct";
+    /** 增加积分，补偿模式 */
+    public static final String BUS_CODE_CPS_ADD_INTEGRAL = "compensable-add-integral";
 
 }

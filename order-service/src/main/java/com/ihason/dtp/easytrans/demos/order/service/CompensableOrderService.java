@@ -2,9 +2,11 @@ package com.ihason.dtp.easytrans.demos.order.service;
 
 import com.ihason.dtp.easytrans.demos.account.api.dto.compensable.CompensableAccountRequestDTO;
 import com.ihason.dtp.easytrans.demos.account.api.dto.compensable.CompensableAccountResponseDTO;
+import com.ihason.dtp.easytrans.demos.account.api.dto.compensable.CompensableIntegralRequestDTO;
 import com.ihason.dtp.easytrans.demos.account.api.feign.AccountService;
 import com.ihason.dtp.easytrans.demos.order.dao.OrderDao;
 import com.ihason.dtp.easytrans.demos.order.entity.Order;
+import com.ihason.dtp.easytrans.demos.order.entity.constant.OrderStatus;
 import com.ihason.dtp.easytrans.demos.order.service.compensable.CompensableUpdateOrderStatusRequest;
 import com.ihason.dtp.easytrans.demos.order.service.saga.request.UpdateOrderStatusRequest;
 import com.yiqiniu.easytrans.core.EasyTransFacade;
@@ -59,10 +61,15 @@ public class CompensableOrderService {
         requestDTO.setAmount(order.getAmount());
         Future<CompensableAccountResponseDTO> accountFuture = transaction.execute(requestDTO);
 
-        // 最后，使用可补偿服务更新ORDER的状态
-        CompensableUpdateOrderStatusRequest statusRequest = new CompensableUpdateOrderStatusRequest();
-        statusRequest.setOrderId(order.getId());
-        transaction.execute(statusRequest);
+        // 使用可补偿服务增加用户积分
+        CompensableIntegralRequestDTO integralRequest = new CompensableIntegralRequestDTO();
+        integralRequest.setUserId(userId);
+        integralRequest.setAmount(order.getAmount().intValue());
+        transaction.execute(integralRequest);
+
+        // 最后，更新订单状态
+        order.setStatus(OrderStatus.SUCCESS);
+        orderDao.updateById(order);
 
         return order;
     }

@@ -27,14 +27,14 @@ public class AccountCompensableMethod  {
      */
     @EtCps(cancelMethod = "cancelDeduct", idempotentType = BusinessProvider.IDENPOTENT_TYPE_FRAMEWORK)
     public CompensableAccountResponseDTO deduct(CompensableAccountRequestDTO request) {
-        log.debug("Starting deduct [{}] for user [{}]", request.getAmount(), request.getUserId());
+        log.info("Starting deduct [{}] for user [{}]", request.getAmount(), request.getUserId());
         // 直接扣减资金
         Account account = service.deduct(request.getUserId(), request.getAmount());
         return new CompensableAccountResponseDTO(account.getId());
     }
 
     public CompensableAccountResponseDTO cancelDeduct(CompensableAccountRequestDTO request) {
-        log.debug("Starting cancel deduct [{}] for user [{}]", request.getAmount(), request.getUserId());
+        log.info("Starting cancel deduct [{}] for user [{}]", request.getAmount(), request.getUserId());
         // 恢复被扣减的资金
         Account account = service.add(request.getUserId(), request.getAmount());
         return new CompensableAccountResponseDTO(account.getId());

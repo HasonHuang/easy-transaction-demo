@@ -26,9 +26,9 @@ public class OrderStatusCompensableMethod {
     public CompensableUpdateOrderStatusResponse updateStatus(CompensableUpdateOrderStatusRequest request) {
         log.debug("Starting submit order: [{}]", request.getOrderId());
         // 确认订单
-        if (request.getOrderId() != null) {
-            throw new RuntimeException("模拟更新状态失败");
-        }
+//        if (request.getOrderId() != null) {
+//            throw new RuntimeException("模拟更新状态失败");
+//        }
         orderService.confirmOrder(request.getOrderId());
         return new CompensableUpdateOrderStatusResponse();
     }
